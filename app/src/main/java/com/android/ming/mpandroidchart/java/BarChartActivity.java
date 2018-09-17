@@ -46,7 +46,7 @@ public class BarChartActivity extends AppCompatActivity {
         set1.setColor(Color.RED);
         BarDataSet set2 = new BarDataSet(entriesGroup2, "group2");
         set2.setColor(Color.GREEN);
-        BarData data = new BarData(set1, set2);
+        BarData data = new BarData(set1,set2);
         data.setBarWidth(0.45f);
         mChat.setData(data);
         mChat.groupBars(1980f, 0.06f, 0.02f);
