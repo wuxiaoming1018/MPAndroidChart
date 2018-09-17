@@ -5,6 +5,8 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.android.ming.mpandroidchart.extension.startActivity
+import com.android.ming.mpandroidchart.java.BarChartActivity
+import com.android.ming.mpandroidchart.java.LineChartActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -26,7 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         btn_barchart.setOnClickListener {
             //柱状图
-            Intent(mContext,BarChartActivity().javaClass).startActivity(mContext)
+            Intent(mContext, BarChartActivity().javaClass).startActivity(mContext)
         }
 
         btn_candlechart.setOnClickListener {
