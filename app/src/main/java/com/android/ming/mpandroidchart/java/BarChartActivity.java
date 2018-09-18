@@ -9,6 +9,7 @@ import android.util.Log;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
@@ -63,6 +64,10 @@ public class BarChartActivity extends AppCompatActivity {
         mChat.setData(data);
         mChat.groupBars(-0.6f, 0.3f, 0.05f);
         mChat.invalidate();
+        Legend legend = mChat.getLegend();
+        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);//靠右
+        legend.setOrientation(Legend.LegendOrientation.VERTICAL);//垂直排列
+        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);//靠上
         Description description = new Description();
         description.setText("公司前半年财务报表(单位：万元)");
         mChat.setDescription(description);

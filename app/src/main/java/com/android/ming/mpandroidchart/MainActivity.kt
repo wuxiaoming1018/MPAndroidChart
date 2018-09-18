@@ -7,6 +7,7 @@ import android.os.Bundle
 import com.android.ming.mpandroidchart.extension.startActivity
 import com.android.ming.mpandroidchart.java.BarChartActivity
 import com.android.ming.mpandroidchart.java.LineChartActivity
+import com.android.ming.mpandroidchart.java.PieChartActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -49,6 +50,7 @@ class MainActivity : AppCompatActivity() {
 
         btn_piechart.setOnClickListener {
             //饼图
+            Intent(mContext,PieChartActivity().javaClass).startActivity(mContext)
         }
 
         btn_radarchart.setOnClickListener {
