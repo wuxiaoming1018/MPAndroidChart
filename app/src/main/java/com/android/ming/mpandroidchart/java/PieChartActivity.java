@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.android.ming.mpandroidchart.R;
 import com.github.mikephil.charting.animation.Easing;
@@ -243,11 +244,12 @@ public class PieChartActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onValueSelected(Entry e, Highlight h) {
-
+        Toast.makeText(this, "Value:"+e.getY(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onNothingSelected() {
-
+        //点击饼状图外面的时候调用
+        Toast.makeText(this, "onNothingSelected()", Toast.LENGTH_SHORT).show();
     }
 }
