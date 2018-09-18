@@ -45,7 +45,8 @@ public class BarChartActivity extends AppCompatActivity {
         for (int i = 0; i < 4; i++) {
             entriesGroup1.add(new BarEntry(i, new Random().nextInt(20) + 20));
             entriesGroup2.add(new BarEntry(i, new Random().nextInt(20) + 20));
-            entriesGroup3.add(new BarEntry(i, new Random().nextInt(20) + 20));
+            //堆积柱状图
+            entriesGroup3.add(new BarEntry(i, new float[]{new Random().nextInt(5) + 10,new Random().nextInt(10) + 5,new Random().nextInt(9) + 12}));
             mGroup.add("第" + (i + 1) + "季度");
         }
         BarDataSet set1 = new BarDataSet(entriesGroup1, "group1");
@@ -55,7 +56,7 @@ public class BarChartActivity extends AppCompatActivity {
         set2.setColor(Color.GREEN);
         set2.setAxisDependency(YAxis.AxisDependency.LEFT);
         BarDataSet set3 = new BarDataSet(entriesGroup3, "group3");
-        set3.setColor(Color.BLUE);
+        set3.setColors(ColorTemplate.COLORFUL_COLORS);
         set3.setAxisDependency(YAxis.AxisDependency.LEFT);
         BarData data = new BarData(set1, set2, set3);
         data.setBarWidth(0.2f);
