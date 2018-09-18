@@ -123,6 +123,10 @@ public class PieChartActivity extends AppCompatActivity implements View.OnClickL
         entries.add(new PieEntry(41000f, "十月"));
         entries.add(new PieEntry(49900f, "十一月"));
         entries.add(new PieEntry(59900f, "十二月"));
+//        entries.add(new PieEntry(50, "优秀"));
+//        entries.add(new PieEntry(10, "满分"));
+//        entries.add(new PieEntry(80, "及格"));
+//        entries.add(new PieEntry(8, "不及格"));
 
         //设置数据
         setData(entries);
@@ -147,7 +151,7 @@ public class PieChartActivity extends AppCompatActivity implements View.OnClickL
     //设置中间文字
     private SpannableString generateCenterSpannableText() {
         //原文：MPAndroidChart\ndeveloped by Philipp Jahoda
-        SpannableString s = new SpannableString("吴小明");
+        SpannableString s = new SpannableString("全年\n营收情况");
         //s.setSpan(new RelativeSizeSpan(1.7f), 0, 14, 0);
         //s.setSpan(new StyleSpan(Typeface.NORMAL), 14, s.length() - 15, 0);
         // s.setSpan(new ForegroundColorSpan(Color.GRAY), 14, s.length() - 15, 0);
@@ -159,9 +163,9 @@ public class PieChartActivity extends AppCompatActivity implements View.OnClickL
 
     //设置数据
     private void setData(ArrayList<PieEntry> entries) {
-        PieDataSet dataSet = new PieDataSet(entries, "三年级一班");
-        dataSet.setSliceSpace(5f);//设置选中的tab离两边的距离
-        dataSet.setSelectionShift(8f);//设置选中的tab的多出来的
+        PieDataSet dataSet = new PieDataSet(entries, "全年营收情况");
+        dataSet.setSliceSpace(0f);//相邻tab之间的距离
+        dataSet.setSelectionShift(5f);//设置选中的tab的凸出来的大小
 
         //数据和颜色
         ArrayList<Integer> colors = new ArrayList<Integer>();
@@ -175,7 +179,7 @@ public class PieChartActivity extends AppCompatActivity implements View.OnClickL
             colors.add(c);
         for (int c : ColorTemplate.PASTEL_COLORS)
             colors.add(c);
-//        colors.add(ColorTemplate.getHoloBlue());
+        colors.add(ColorTemplate.getHoloBlue());
         dataSet.setColors(colors);
         PieData data = new PieData(dataSet);
         data.setValueFormatter(new PercentFormatter());
@@ -184,51 +188,6 @@ public class PieChartActivity extends AppCompatActivity implements View.OnClickL
         mPieChart.setData(data);
         mPieChart.highlightValues(null);
         //刷新
-        mPieChart.invalidate();
-    }
-
-    private void initData() {
-        List<PieEntry> entries = new ArrayList<>();
-        entries.add(new PieEntry(28500f, "一月"));
-        entries.add(new PieEntry(26700f, "二月"));
-        entries.add(new PieEntry(24000f, "三月"));
-        entries.add(new PieEntry(30800f, "四月"));
-        entries.add(new PieEntry(24800f, "五月"));
-        entries.add(new PieEntry(39100f, "六月"));
-        entries.add(new PieEntry(15900f, "七月"));
-        entries.add(new PieEntry(45600f, "八月"));
-        entries.add(new PieEntry(59200f, "九月"));
-        entries.add(new PieEntry(41000f, "十月"));
-        entries.add(new PieEntry(49900f, "十一月"));
-        entries.add(new PieEntry(59900f, "十二月"));
-        PieDataSet dataSet = new PieDataSet(entries, "全年营收情况");
-        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-        PieData data = new PieData(dataSet);
-        mPieChart.setData(data);
-        mPieChart.animateY(3000);
-        //设置饼状图距离上下左右的偏移量
-        mPieChart.setExtraOffsets(5, 5, 5, 5);
-        //设置阻尼系数，【0-1】之间，越小，饼状图转动越困难
-        mPieChart.setDragDecelerationFrictionCoef(1f);
-
-        //中间文字属性设置
-        mPieChart.setDrawCenterText(true);
-        mPieChart.setCenterText("吴小明");
-        mPieChart.setCenterTextColor(Color.GRAY);
-        mPieChart.setCenterTextSize(18f);
-
-        //饼状图中间圆属性设置
-        mPieChart.setDrawHoleEnabled(true);
-        mPieChart.setHoleColor(Color.WHITE);
-        mPieChart.setHoleRadius(32f);
-
-        Description description = new Description();
-        description.setText("全年消费情况");
-        mPieChart.setDescription(description);
-
-        for (IPieDataSet set : mPieChart.getData().getDataSets()) {
-            set.setDrawValues(!set.isDrawValuesEnabled());
-        }
         mPieChart.invalidate();
     }
 
