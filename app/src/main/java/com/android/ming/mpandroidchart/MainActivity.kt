@@ -8,6 +8,7 @@ import com.android.ming.mpandroidchart.extension.startActivity
 import com.android.ming.mpandroidchart.java.BarChartActivity
 import com.android.ming.mpandroidchart.java.LineChartActivity
 import com.android.ming.mpandroidchart.java.PieChartActivity
+import com.android.ming.mpandroidchart.java.RadarChartActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -55,6 +56,7 @@ class MainActivity : AppCompatActivity() {
 
         btn_radarchart.setOnClickListener {
             //雷达海图
+            Intent(mContext,RadarChartActivity().javaClass).startActivity(mContext)
         }
     }
 }

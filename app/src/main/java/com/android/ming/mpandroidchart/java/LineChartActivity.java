@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis.AxisDependency;
 import com.github.mikephil.charting.data.Entry;
@@ -67,9 +68,13 @@ public class LineChartActivity extends AppCompatActivity {
         LineData data = new LineData(dataSets);
         mChat.setData(data);
         mChat.animateY(3000);
-        mChat.invalidate();
+        Legend legend = mChat.getLegend();
+        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
+        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
+        legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
         XAxis xAxis = mChat.getXAxis();
         xAxis.setGranularity(1f);
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {

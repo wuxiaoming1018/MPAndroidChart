@@ -65,14 +65,15 @@ public class BarChartActivity extends AppCompatActivity {
         mChat.groupBars(-0.6f, 0.3f, 0.05f);
         mChat.invalidate();
         Legend legend = mChat.getLegend();
-        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);//靠右
-        legend.setOrientation(Legend.LegendOrientation.VERTICAL);//垂直排列
-        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);//靠上
+        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
+        legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
+        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
         Description description = new Description();
         description.setText("公司前半年财务报表(单位：万元)");
         mChat.setDescription(description);
         XAxis xAxis = mChat.getXAxis();
         xAxis.setGranularity(1f);
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
