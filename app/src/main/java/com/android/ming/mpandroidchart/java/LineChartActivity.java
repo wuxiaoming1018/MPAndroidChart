@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.android.ming.mpandroidchart.R;
+import com.android.ming.mpandroidchart.java.view.MyMarkerView;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
@@ -24,6 +26,7 @@ public class LineChartActivity extends AppCompatActivity {
 
     private LineChart mChat;
     private String[] mVaule = new String[]{"Q1", "Q2", "Q3", "Q4"};
+    private MyMarkerView markerView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -68,6 +71,9 @@ public class LineChartActivity extends AppCompatActivity {
         LineData data = new LineData(dataSets);
         mChat.setData(data);
         mChat.animateY(3000);
+        markerView = new MyMarkerView(this,R.layout.mark_view);
+        markerView.setChartView(mChat);
+        mChat.setMarker(markerView);
         Legend legend = mChat.getLegend();
         legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
         legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
